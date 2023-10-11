@@ -7,7 +7,7 @@ import {Loader} from './loader.js'
 
 const bot = new Telegraf(config.get('TELEGRAM_TOKEN'), {handlerTimeout: Infinity})
 
-bot.command("start", ctx => ctx.reply("Это ботик для историй"))
+bot.command("start", ctx => ctx.reply("Это ботик для историй. Впиши сюда свои моменты за день и получишь классную историю, которую можно рассказать знакомым"))
 
 bot.on(message('text'), async (ctx) => {
     try {
@@ -26,7 +26,7 @@ bot.on(message('text'), async (ctx) => {
 
         loader.hide()
 
-        ctx.reply(`Ваша страница: ${notionResponse.url}`)
+        ctx.reply(`Ваша страница с готовой историей: ${notionResponse.url}`)
     } catch (e) {
         console.log('Error while processing gpt:', e.message)
     }
